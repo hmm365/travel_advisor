@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { CircularProgress, Grid, Typography, InputLabel, MenuItem, Formcontrol, Select, FormControl } from '@material-ui/core';
+import { CircularProgress, Grid, Typography, InputLabel, MenuItem, Select, FormControl } from '@material-ui/core';
 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './styles';
@@ -13,8 +13,9 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
             .fill()
             .map((_, inx) => elRefs[inx] || createRef());
         setElrefs(refs);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places]);
-    console.log(isLoading);
+
     return (
         <div className={classes.container}>
             <Typography variant="h4">Restaurants, Hotels & Attractions around you</Typography>
