@@ -32,7 +32,6 @@ const App = () => {
     }, [rating]);
 
     useEffect(() => {
-        console.log(bounds);
         if (bounds) {
             setIsLoading(true);
             getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
