@@ -31,20 +31,21 @@ const App = () => {
     }, [rating]);
 
     useEffect(() => {
-        setIsLoading(true);
+        console.log(bounds);
         if (bounds) {
+            setIsLoading(true);
             getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-                setPlaces(data);
+                setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
                 setFilteredPlaces([]);
                 setIsLoading(false);
             });
         }
-    }, [type, coords, bounds]);
+    }, [type, bounds]);
 
     return (
         <>
             <CssBaseline />
-            <Header />
+            <Header setCoords={setCoords} />
             <Grid container spacing={3} style={{ width: '100%' }}>
                 <Grid item xs={12} md={4}>
                     <List
